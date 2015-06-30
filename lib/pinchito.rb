@@ -1,3 +1,4 @@
+require 'date'
 require "pinchito/version"
 require "pinchito/log"
 require "pinchito/client"

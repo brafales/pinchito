@@ -34,8 +34,8 @@ describe Pinchito::Log do
     it "has the log contents" do
       lines = [
         { user: "User1", text: "conec un pavo", time: Time.new(2007, 1, 10, 23, 13, 42) },
-        { user: "User1", text: "que diu que ell no està contaminat", time: Time.new(2007, 1, 10, 23, 13, 42) },
-        { user: "User1", text: "diu: jo vaig començar amb amiga", time: Time.new(2007, 1, 10, 23, 13, 50) },
+        { user: "User1", text: "que diu que ell no està contaminat", time: Time.new(2007, 1, 10, 23, 13, 50) },
+        { user: "User1", text: "diu: jo vaig començar amb amiga", time: Time.new(2007, 1, 10, 23, 13, 55) },
         { user: "User1", text: "i d'amiga vaig passar a linux", time: Time.new(2007, 1, 10, 23, 14, 01) },
         { user: "User1", text: "xD", time: Time.new(2007, 1, 10, 23, 14, 02) },
         { user: "User2", text: "hagues estat millor passar d'amiga a novia", time: Time.new(2007, 1, 10, 23, 14, 26) }

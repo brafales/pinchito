@@ -5,6 +5,10 @@ module Pinchito
 
     attr_reader :body, :title, :author, :date, :lines
 
+    def self.from_id(id)
+      Log.new(Pinchito::Client.get_log(id: id))
+    end
+
     def initialize(body)
       @body = body
       parse
@@ -41,7 +45,7 @@ module Pinchito
         .reject(&:empty?)
       users = log_paragraph.search(".nick").map(&:text)
       times = log_paragraph.search(".hora").map(&:text).map(&method(:parse_hour))
-      6.times.map do |i|
+      texts.count.times.map do |i|
         {
           user: users[i],
           time: times[i],

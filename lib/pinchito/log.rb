@@ -14,7 +14,21 @@ module Pinchito
       parse
     end
 
+    def to_s
+      [
+        title,
+        pretty_lines,
+        date
+      ].join("\n")
+    end
+
     private
+
+    def pretty_lines
+      lines.map do |line|
+        "#{line[:time]} - #{line[:user]}: #{line[:text]}"
+      end.join("\n")
+    end
 
     def parse
       html_doc = Nokogiri::HTML(body)
@@ -59,8 +73,8 @@ module Pinchito
     end
 
     def parse_hour(text)
-      hour_info = text.match(/\[(\d+):(\d+):(\d+)\]/)
-      Time.new(@date.year, @date.month, @date.day, hour_info[1], hour_info[2], hour_info[3])
+      hour_info = text.match(/\[(\d+)?:?(\d+)?:?(\d+)?\]/)
+      Time.new(@date.year, @date.month, @date.day, hour_info[1].to_i, hour_info[2].to_i, hour_info[3].to_i)
     end
   end
 end

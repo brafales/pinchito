@@ -19,7 +19,7 @@ module Pinchito
         title,
         pretty_lines,
         date
-      ].join("\n")
+      ].join("\n").scrub
     end
 
     private

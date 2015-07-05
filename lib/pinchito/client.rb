@@ -7,6 +7,10 @@ module Pinchito
       connection.get(log_url(id: id)).body
     end
 
+    def self.search_log(query:)
+      connection.get(search_url, {s: query}).body
+    end
+
     private
 
     def self.connection
@@ -19,6 +23,10 @@ module Pinchito
 
     def self.log_url(id:)
       id.to_s
+    end
+
+    def self.search_url
+      'buscar'
     end
   end
 end

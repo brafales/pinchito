@@ -12,6 +12,10 @@ module Pinchito
       Log.new(Pinchito::Client.get_log(id: id))
     end
 
+    def self.from_search(query)
+      Log.new(Pinchito::Client.search_log(query: query))
+    end
+
     def initialize(body)
       @body = body
       parse

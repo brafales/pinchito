@@ -16,6 +16,10 @@ module Pinchito
       Log.new(Pinchito::Client.search_log(query: query))
     end
 
+    def self.from_tapeta
+      Log.new(Pinchito::Client.tapeta)
+    end
+
     def initialize(body)
       @body = body
       parse

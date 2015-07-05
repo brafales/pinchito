@@ -11,6 +11,10 @@ module Pinchito
       connection.get(search_url, {s: query}).body
     end
 
+    def self.tapeta
+      connection.get(tapeta_url).body
+    end
+
     private
 
     def self.connection
@@ -27,6 +31,10 @@ module Pinchito
 
     def self.search_url
       'buscar'
+    end
+
+    def self.tapeta_url
+      'tapeta'
     end
   end
 end

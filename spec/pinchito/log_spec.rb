@@ -32,15 +32,15 @@ describe Pinchito::Log do
 
   describe "#lines" do
     it "has the log contents" do
-      lines = [
-        { user: "User1", text: "conec un pavo", time: Time.new(2007, 1, 10, 23, 13, 42) },
-        { user: "User1", text: "que diu que ell no està contaminat", time: Time.new(2007, 1, 10, 23, 13, 50) },
-        { user: "User1", text: "diu: jo vaig començar amb amiga", time: Time.new(2007, 1, 10, 23, 13, 55) },
-        { user: "User1", text: "i d'amiga vaig passar a linux", time: Time.new(2007, 1, 10, 23, 14, 01) },
-        { user: "User1", text: "xD", time: Time.new(2007, 1, 10, 23, 14, 02) },
-        { user: "User2", text: "hagues estat millor passar d'amiga a novia", time: Time.new(2007, 1, 10, 23, 14, 26) }
-      ]
-      @log.lines.must_equal lines
+      text = <<EOL
+[23:13:42] <User1> conec un pavo
+[23:13:50] <User1> que diu que ell no està contaminat
+[23:13:55] <User1> diu: jo vaig començar amb amiga
+[23:14:01] <User1> i d'amiga vaig passar a linux
+[23:14:02] <User1> xD
+[23:14:26] <User2> hagues estat millor passar d'amiga a novia
+EOL
+      @log.lines.must_equal text.chomp
     end
   end
 
@@ -49,12 +49,12 @@ describe Pinchito::Log do
       pretty_log = <<EOL
 LogTitle
 
-23:13:42 - User1: conec un pavo
-23:13:50 - User1: que diu que ell no està contaminat
-23:13:55 - User1: diu: jo vaig començar amb amiga
-23:14:01 - User1: i d'amiga vaig passar a linux
-23:14:02 - User1: xD
-23:14:26 - User2: hagues estat millor passar d'amiga a novia
+[23:13:42] <User1> conec un pavo
+[23:13:50] <User1> que diu que ell no està contaminat
+[23:13:55] <User1> diu: jo vaig començar amb amiga
+[23:14:01] <User1> i d'amiga vaig passar a linux
+[23:14:02] <User1> xD
+[23:14:26] <User2> hagues estat millor passar d'amiga a novia
 
 Enviat el 10/01/2007 per User3
 EOL

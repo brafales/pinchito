@@ -25,7 +25,7 @@ module Pinchito
       [
         title,
         "",
-        pretty_lines,
+        lines,
         "",
         date_line,
       ].join("\n").scrub
@@ -43,12 +43,6 @@ module Pinchito
 
     def pretty_time(datetime)
       datetime.strftime(TIME_FORMAT)
-    end
-
-    def pretty_lines
-      lines.map do |line|
-        "#{pretty_time(line[:time])} - #{line[:user]}: #{line[:text]}"
-      end.join("\n")
     end
 
     def parse
@@ -73,20 +67,7 @@ module Pinchito
     end
 
     def extract_lines(html_doc)
-      log_paragraph = html_doc.search(".logbody > p:nth-child(1)").first
-      texts = log_paragraph.children.select{|n| n.is_a?(Nokogiri::XML::Text) }
-        .map(&:text)
-        .map(&:strip)
-        .reject(&:empty?)
-      users = log_paragraph.search(".nick").map(&:text)
-      times = log_paragraph.search(".hora").map(&:text).map(&method(:parse_hour))
-      texts.count.times.map do |i|
-        {
-          user: users[i],
-          time: times[i],
-          text: texts[i]
-        }
-      end
+      html_doc.search(".logbody > p:nth-child(1)").first.text
     end
 
     def author_line(html_doc)

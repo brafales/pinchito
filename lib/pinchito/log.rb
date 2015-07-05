@@ -3,6 +3,9 @@ require "nokogiri"
 module Pinchito
   class Log
 
+    DATE_FORMAT = "%d/%m/%Y"
+    TIME_FORMAT = "%H:%M:%S"
+
     attr_reader :body, :title, :author, :date, :lines
 
     def self.from_id(id)
@@ -17,16 +20,30 @@ module Pinchito
     def to_s
       [
         title,
+        "",
         pretty_lines,
-        date
+        "",
+        date_line,
       ].join("\n").scrub
     end
 
     private
 
+    def date_line
+      "Enviat el #{pretty_date(date)} per #{author}"
+    end
+
+    def pretty_date(date)
+      date.strftime(DATE_FORMAT)
+    end
+
+    def pretty_time(datetime)
+      datetime.strftime(TIME_FORMAT)
+    end
+
     def pretty_lines
       lines.map do |line|
-        "#{line[:time]} - #{line[:user]}: #{line[:text]}"
+        "#{pretty_time(line[:time])} - #{line[:user]}: #{line[:text]}"
       end.join("\n")
     end
 

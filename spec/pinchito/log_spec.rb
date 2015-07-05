@@ -43,4 +43,23 @@ describe Pinchito::Log do
       @log.lines.must_equal lines
     end
   end
+
+  describe '#to_s' do
+    it "has a pretty format of the log" do
+      pretty_log = <<EOL
+LogTitle
+
+23:13:42 - User1: conec un pavo
+23:13:50 - User1: que diu que ell no està contaminat
+23:13:55 - User1: diu: jo vaig començar amb amiga
+23:14:01 - User1: i d'amiga vaig passar a linux
+23:14:02 - User1: xD
+23:14:26 - User2: hagues estat millor passar d'amiga a novia
+
+Enviat el 10/01/2007 per User3
+EOL
+
+      @log.to_s.must_equal pretty_log.chomp
+    end
+  end
 end

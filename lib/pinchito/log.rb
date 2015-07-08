@@ -51,10 +51,18 @@ module Pinchito
 
     def parse
       html_doc = Nokogiri::HTML(body)
+      enforce_log(html_doc)
       @title = extract_title(html_doc)
       @author = extract_author(html_doc)
       @date = extract_date(html_doc)
       @lines = extract_lines(html_doc)
+    end
+
+    def enforce_log(html_doc)
+      log = html_doc.search("div.log")
+      if log.empty?
+        raise Pinchito::LogNotFound
+      end
     end
 
     def extract_title(html_doc)

@@ -79,7 +79,7 @@ module Pinchito
     end
 
     def extract_lines(html_doc)
-      html_doc.search(".logbody > p:nth-child(1)").first.text.gsub("\r", "\n")
+      html_doc.search(".logbody > p:nth-child(1)").first.text.gsub("\r", "\r\n")
     end
 
     def author_line(html_doc)

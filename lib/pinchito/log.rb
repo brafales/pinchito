@@ -70,7 +70,7 @@ module Pinchito
     end
 
     def extract_author(html_doc)
-      author_line(html_doc).match(/Enviat per (.*)\./)[1]
+      author_line(html_doc).match(/enviat per (.*)/)[1]
     end
 
     def extract_date(html_doc)

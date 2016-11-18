@@ -1,7 +1,7 @@
 module Pinchito
   class Client
 
-    PINCHITO_BASE_URL = 'http://old.pinchito.com'
+    PINCHITO_BASE_URL = 'http://go.pinchito.com'
 
     def self.get_log(id:)
       connection.get(log_url(id: id)).body

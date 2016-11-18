@@ -1,97 +1,30 @@
+<!DOCTYPE html>
+
 <html>
 <head>
   <title>Pinchito</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
-  <link href="/stylesheets/pinchito.css" media="screen" rel="Stylesheet" type="text/css" />
-  <script src="/javascripts/prototype.js" type="text/javascript"></script>
-<script src="/javascripts/effects.js" type="text/javascript"></script>
-
-<script>
-
-function showTagAdder(id)
-{
-  document.getElementById('taglink-'+id).style.display = 'none';
-  document.getElementById('tagadder-'+id).style.display = 'inline';
-  document.getElementById('newtag-'+id).focus();
-}
-
-function updateStars(id, num)
-{
-   processingStar = 1;
-   while(processingStar <= num)
-     {
-      star = document.getElementById(id+processingStar);
-      attrib = document.createAttribute('src');
-      attrib.value = '/images/star.png';
-      star.setAttributeNode(attrib);
-      processingStar++;
-     }
-   while(processingStar <=5)
-     {
-      star = document.getElementById(id+processingStar);
-      attrib = document.createAttribute('src');
-      attrib.value = '/images/star-bw.png';
-      star.setAttributeNode(attrib);
-      processingStar++;
-     }
-}
-
-</script>
-
+   <link href="/public/css/pinchito.css" media="screen" rel="Stylesheet" type="text/css" />
+   <link rel="icon" type="image/png" href="/public/images/favicon.ico">
 </head>
 <body>
 
 <div id="marc">
 <div id="deco_top"><div></div></div>
 <div id="pagina">
-
-<a href="/"><img alt="Pinchito. Logs casolans fets a foc lent" height="54" id="logo" src="/images/pinchito.png" width="209" /></a>
+<a href="/"><img alt="Pinchito. Logs casolans fets a foc lent" height="54" id="logo" src="/public/images/pinchito.png" width="209" /></a>
 
 <div id="buscador">
 <form action="/buscar" method="get">
-
 <label for="string">Paraules:</label>
 <input type="text" name="s" value=""  class="textfield" /><br />
 <input class="submit" type="submit" value="Buscar" />
-
 </form>
-
-
-
-
 </div>
 
 <div id="menu_superior">
-<div id="login">
 
-<p id="loading_login" style="display: none; margin: 0;">
-<img alt="Throbber" height="20" src="/images/throbber.gif" width="20" /> Espera, si et plau... </p>
-
-
-
-<form action="/account/login" method="post" onsubmit="new Ajax.Updater('login', '/account/login', {asynchronous:true, evalScripts:true, onComplete:function(request){ Element.hide('loading_login');
-                                   new Effect.Highlight('missatge_flash', {startcolor: '#ff0000',endcolor: '#000000', duration: 4 });}, onLoading:function(request){Element.show('loading_login')}, parameters:Form.serialize(this)}); return false;">
-  <span id="missatge_flash">
-  
-  </span>
-
-      <label for="user_login">Nom:</label>
-
-    <input type="text" name="user_login" id="user_login" value=""  class="textfield" />
-    &nbsp;
-    <label for="user_password">Contrasenya:</label>
-    <input type="password" name="user_password" id="user_password" class="textfield" />
-    &nbsp;
-
-
-  <input class="submit" name="commit" type="submit" value="Entrar" />
-</form>
-
-
-
-
-</div>
 </div>
 
 <div id="menu_lateral">
@@ -99,90 +32,46 @@ function updateStars(id, num)
 <div class="menu_group">La nostra carta</div>
 <a class="no_actual" href="/menu">Menú</a>
 <a class="no_actual" href="/especialitats">Especialitats</a>
-
 <a class="no_actual" href="/tapeta">Una tapeta</a>
 
-
-
-
-
 </div>
+
 
 
 <div id="contingut">
 
-
-
 <div class="log">
-
-<span id="puntuacio-2105">
-
-</span>
-
+<span id="puntuacio-2105"></span>
 <span class="titollog">
 
-
-
-<img alt="36" height="32" src="/users/avatar/36.png" title="[RiS]" width="32" />
-
-
+<img alt="36" height="32" src="/users/avatar/36" title="[RiS]" width="32" />
 
 <a href="/2105">LogTitle</a>
-
 </span>
-
-
-
 <div class="logbody">
-
-<p><span class="hora">[23:13:42]</span> <span class="nick_deco">&lt;</span><span class="nick">User1</span><span class="nick_deco">&gt;</span> conec un pavo
-<br /><span class="hora">[23:13:50]</span> <span class="nick_deco">&lt;</span><span class="nick">User1</span><span class="nick_deco">&gt;</span> que diu que ell no està contaminat
-<br /><span class="hora">[23:13:55]</span> <span class="nick_deco">&lt;</span><span class="nick">User1</span><span class="nick_deco">&gt;</span> diu: jo vaig començar amb amiga
-<br /><span class="hora">[23:14:01]</span> <span class="nick_deco">&lt;</span><span class="nick">User1</span><span class="nick_deco">&gt;</span> i d'amiga vaig passar a linux
-<br /><span class="hora">[23:14:02]</span> <span class="nick_deco">&lt;</span><span class="nick">User1</span><span class="nick_deco">&gt;</span> xD
-<br /><span class="hora">[23:14:26]</span> <span class="nick_deco">&lt;</span><span class="nick">User2</span><span class="nick_deco">&gt;</span> hagues estat millor passar d'amiga a novia</p>
+<p>
+<span class="hora">[23:13:42]</span> <span class="nick_deco">&lt;</span><span class="nick">User1</span><span class="nick_deco">&gt;</span> conec un pavo
+<br><span class="hora">[23:13:50]</span> <span class="nick_deco">&lt;</span><span class="nick">User1</span><span class="nick_deco">&gt;</span> que diu que ell no està contaminat
+<br><span class="hora">[23:13:55]</span> <span class="nick_deco">&lt;</span><span class="nick">User1</span><span class="nick_deco">&gt;</span> diu: jo vaig començar amb amiga
+<br><span class="hora">[23:14:01]</span> <span class="nick_deco">&lt;</span><span class="nick">User1</span><span class="nick_deco">&gt;</span> i d'amiga vaig passar a linux
+<br><span class="hora">[23:14:02]</span> <span class="nick_deco">&lt;</span><span class="nick">User1</span><span class="nick_deco">&gt;</span> xD
+<br><span class="hora">[23:14:26]</span> <span class="nick_deco">&lt;</span><span class="nick">User2</span><span class="nick_deco">&gt;</span> hagues estat millor passar d'amiga a novia
+<p>
 </div>
-
 <div class="infolog">
-Log del 10/01/2007 a les 23:30. Enviat per User3.
+Log del 10/01/2007 a les 23:30 enviat per User3
+</div>
+<div class="logtags" id="logtags-2105"></div>
 </div>
 
-<div class="logtags" id="logtags-2105">
-
+   </div>
+   <div id="galeta">
+    <div id="frase"><q>Fuck the revolution!</q></div>
+    <div id="autor">Bono</div>
 </div>
 
-</div>
+   </div>
+   <div id="deco_bot"><div></div></div> </div>
 
-
-
-
-</div>
-
-<div id="galeta">
-
-<div id="frase">"Quote"</div>
-
-<div id="autor">Quote author</div>
-
-</div>
-
-
-
-
-</div>
-<div id="deco_bot"><div></div></div>
-</div>
-
-<script type="text/javascript">
-new Effect.Highlight('missatge_flash', {startcolor: '#ff0000',endcolor: '#000000', duration: 4 });
-</script>
-
-<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
-</script>
-<script type="text/javascript">
-_uacct = "GA Account";
-urchinTracker();
-</script>
-</body>
+  </body>
 </html>
-
